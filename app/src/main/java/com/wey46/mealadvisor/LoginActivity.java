@@ -88,10 +88,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
             Toast.makeText(this,"Authentication passed",Toast.LENGTH_SHORT).show();
-//            Intent accountsIntent = new Intent(activity, UsersListActivity.class);
-//            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
-//            emptyInputEditText();
-//            startActivity(accountsIntent);
+            Intent accountsIntent = new Intent(activity, ListActivity.class);
+            accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
+            emptyInputEditText();
+            startActivity(accountsIntent);
 
         } else {
             Toast.makeText(this,getString(R.string.error_valid_email_password),Toast.LENGTH_LONG).show();
