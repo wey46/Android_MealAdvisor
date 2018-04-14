@@ -182,18 +182,8 @@ public class ProfileActivity extends AppCompatActivity {
                     y = event.values[1];
                     z = event.values[2];
 
-                    if(Round(x,4)>10.0000){
-                        Log.d("sensor", "X Right axis: " + x);
-                        Toast.makeText(getApplicationContext(), "Right shake detected", Toast.LENGTH_SHORT).show();
-                    }
-                    else if(Round(x,4)<-10.0000){
-                        Log.d("sensor", "X Left axis: " + x);
-                        Toast.makeText(getApplicationContext(), "Left shake detected", Toast.LENGTH_SHORT).show();
-                    }
-
                     float speed = Math.abs(x+y+z - last_x - last_y - last_z) / diffTime * 10000;
                     if (speed > SHAKE_THRESHOLD) {
-                        Log.d("sensor", "shake detected w/ speed: " + speed);
                         Toast.makeText(getApplicationContext(), "shake detected w/ speed: " + speed, Toast.LENGTH_SHORT).show();
 
                         // Reset to default avatar
@@ -247,14 +237,6 @@ public class ProfileActivity extends AppCompatActivity {
             sensorManager = null;
         }
         super.onPause();
-    }
-
-    //TODO: why need round?
-    private static float Round(float R, int P) {
-        float pf = (float)Math.pow(10,P);
-        R = R * pf;
-        float tmp = Math.round(R);
-        return tmp/P;
     }
 
 }
