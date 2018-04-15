@@ -167,7 +167,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         long lastUpdate = -1;
         float x,y,z,last_x,last_y,last_z;
-        int SHAKE_THRESHOLD = 800;
+        int SHAKE_THRESHOLD = 600;
 
         @Override
         public void onSensorChanged(SensorEvent event) {
@@ -184,7 +184,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                     float speed = Math.abs(x+y+z - last_x - last_y - last_z) / diffTime * 10000;
                     if (speed > SHAKE_THRESHOLD) {
-                        Toast.makeText(getApplicationContext(), "shake detected w/ speed: " + speed, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "shake detected, speed: " + speed, Toast.LENGTH_SHORT).show();
 
                         // Reset to default avatar
                         InputStream inputStream = null;

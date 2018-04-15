@@ -82,9 +82,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection = COLUMN_USER_EMAIL + " = ?";
         String[] selectionArgs = {email};
 
-        /**
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com';
-         */
         Cursor cursor = db.query(TABLE_USER, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
@@ -110,9 +107,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection = COLUMN_USER_EMAIL + " = ?" + " AND " + COLUMN_USER_PASSWORD + " = ?";
         String[] selectionArgs = {email, password};
 
-        /**
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
-         */
         Cursor cursor = db.query(TABLE_USER, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause

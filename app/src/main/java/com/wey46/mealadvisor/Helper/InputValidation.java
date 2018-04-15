@@ -9,13 +9,14 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 public class InputValidation {
+
     private Context context;
 
     public InputValidation(Context context) {
         this.context = context;
     }
 
-    //check if the text field is edited
+    //Check empty input
     public boolean isInputEditTextFilled(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
         String value = textInputEditText.getText().toString().trim();
         if (value.isEmpty()) {
@@ -29,6 +30,7 @@ public class InputValidation {
         return true;
     }
 
+    //check empty input email validation
     public boolean isInputEditTextEmail(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
         String value = textInputEditText.getText().toString().trim();
         if (value.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(value).matches()) {

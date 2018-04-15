@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private final AppCompatActivity activity = RegisterActivity.this;
 
-    private NestedScrollView nestedScrollView;
     private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
@@ -40,17 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         getSupportActionBar().hide();
-
-        initViews();
-        initListeners();
-        initObjects();
-    }
-
-    /**
-     * This method is to initialize views
-     */
-    private void initViews() {
-        nestedScrollView = findViewById(R.id.nestedScrollView);
+        //init view
         textInputLayoutName = findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = findViewById(R.id.textInputLayoutPassword);
@@ -61,16 +50,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextConfirmPassword = findViewById(R.id.textInputEditTextConfirmPassword);
         appCompatButtonRegister = findViewById(R.id.appCompatButtonRegister);
         appCompatTextViewLoginLink = findViewById(R.id.appCompatTextViewLoginLink);
-    }
-
-    private void initListeners() {
+        //init listener
         appCompatButtonRegister.setOnClickListener(this);
         appCompatTextViewLoginLink.setOnClickListener(this);
-    }
-
-    private void initObjects() {
-        inputValidation = new InputValidation(activity);
-        databaseHelper = new DatabaseHelper(activity);
+        //init objects
+        inputValidation = new InputValidation(this);
+        databaseHelper = new DatabaseHelper(this);
         user = new User();
     }
 
@@ -106,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        if (!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {
+        if (!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {//Ok, can register
 
             user.setName(textInputEditTextName.getText().toString().trim());
             user.setEmail(textInputEditTextEmail.getText().toString().trim());
